@@ -1,7 +1,7 @@
 class Calculator {
-  constructor(previusOparandTextElement, currentOparandTextElement) {
-    this.previusOparandTextElement = previusOparandTextElement;
-    this.currentOparandTextElement = currentOparandTextElement;
+  constructor(previusButton, currentButton) {
+    this.previusButton = previusButton;
+    this.currentButton = currentButton;
   }
 
   clear() {
@@ -12,13 +12,17 @@ class Calculator {
 
   delate() {}
 
-  appendNumber(number) {}
+  appendNumber(number) {
+    this.currentOparand = number;
+  }
 
   choseOpartion(oparation) {}
 
   compute() {}
 
-  updateDisplay() {}
+  updateDisplay() {
+    this.currentButton.innerText = this.currentOparand;
+  }
 }
 
 const numberButton = document.querySelectorAll("[data-number]");
@@ -36,3 +40,14 @@ const clearButton = document.querySelector("[data-clear]");
 const previusButton = document.querySelector("[data-previus-oparand]");
 
 const currentButton = document.querySelector("[data-current-oparand]");
+
+// create new object base on our classCallCheck
+
+const calculator = new Calculator(previusButton, currentButton);
+
+numberButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});

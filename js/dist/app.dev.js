@@ -9,11 +9,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var Calculator =
 /*#__PURE__*/
 function () {
-  function Calculator(previusOparandTextElement, currentOparandTextElement) {
+  function Calculator(previusButton, currentButton) {
     _classCallCheck(this, Calculator);
 
-    this.previusOparandTextElement = previusOparandTextElement;
-    this.currentOparandTextElement = currentOparandTextElement;
+    this.previusButton = previusButton;
+    this.currentButton = currentButton;
   }
 
   _createClass(Calculator, [{
@@ -28,7 +28,9 @@ function () {
     value: function delate() {}
   }, {
     key: "appendNumber",
-    value: function appendNumber(number) {}
+    value: function appendNumber(number) {
+      this.currentOparand = number;
+    }
   }, {
     key: "choseOpartion",
     value: function choseOpartion(oparation) {}
@@ -37,7 +39,9 @@ function () {
     value: function compute() {}
   }, {
     key: "updateDisplay",
-    value: function updateDisplay() {}
+    value: function updateDisplay() {
+      this.currentButton.innerText = this.currentOparand;
+    }
   }]);
 
   return Calculator;
@@ -50,4 +54,12 @@ var allClearButton = document.querySelector("[data-all-clear]");
 var delateButton = document.querySelector("[data-delate]");
 var clearButton = document.querySelector("[data-clear]");
 var previusButton = document.querySelector("[data-previus-oparand]");
-var currentButton = document.querySelector("[data-current-oparand]");
+var currentButton = document.querySelector("[data-current-oparand]"); // create new object base on our classCallCheck
+
+var calculator = new Calculator(previusButton, currentButton);
+numberButton.forEach(function (button) {
+  button.addEventListener("click", function () {
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});
