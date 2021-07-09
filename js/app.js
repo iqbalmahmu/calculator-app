@@ -1,3 +1,26 @@
+class Calculator {
+  constructor(previusOparandTextElement, currentOparandTextElement) {
+    this.previusOparandTextElement = previusOparandTextElement;
+    this.currentOparandTextElement = currentOparandTextElement;
+  }
+
+  clear() {
+    this.currentOparand = "";
+    this.previusOparand = "";
+    this.oparation = undefined;
+  }
+
+  delate() {}
+
+  appendNumber(number) {}
+
+  choseOpartion(oparation) {}
+
+  compute() {}
+
+  updateDisplay() {}
+}
+
 const numberButton = document.querySelectorAll("[data-number]");
 
 const oparandButton = document.querySelectorAll("[data-oparand]");
