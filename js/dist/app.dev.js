@@ -14,6 +14,7 @@ function () {
 
     this.previusButton = previusButton;
     this.currentButton = currentButton;
+    this.clear();
   }
 
   _createClass(Calculator, [{
@@ -29,11 +30,17 @@ function () {
   }, {
     key: "appendNumber",
     value: function appendNumber(number) {
-      this.currentOparand = number;
+      if (number === "." && this.currentOparand.includes(".")) {
+        return;
+      }
+
+      this.currentOparand = this.currentOparand.toString() + number.toString();
     }
   }, {
     key: "choseOpartion",
-    value: function choseOpartion(oparation) {}
+    value: function choseOpartion(oparation) {
+      this.oparation = oparation;
+    }
   }, {
     key: "compute",
     value: function compute() {}
@@ -60,6 +67,12 @@ var calculator = new Calculator(previusButton, currentButton);
 numberButton.forEach(function (button) {
   button.addEventListener("click", function () {
     calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});
+oparandButton.forEach(function (button) {
+  button.addEventListener("click", function () {
+    calculator.choseOpartion(button.innerText);
     calculator.updateDisplay();
   });
 });

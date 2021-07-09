@@ -2,6 +2,7 @@ class Calculator {
   constructor(previusButton, currentButton) {
     this.previusButton = previusButton;
     this.currentButton = currentButton;
+    this.clear();
   }
 
   clear() {
@@ -13,10 +14,15 @@ class Calculator {
   delate() {}
 
   appendNumber(number) {
-    this.currentOparand = number;
+    if (number === "." && this.currentOparand.includes(".")) {
+      return;
+    }
+    this.currentOparand = this.currentOparand.toString() + number.toString();
   }
 
-  choseOpartion(oparation) {}
+  choseOpartion(oparation) {
+    this.oparation = oparation;
+  }
 
   compute() {}
 
@@ -48,6 +54,13 @@ const calculator = new Calculator(previusButton, currentButton);
 numberButton.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});
+
+oparandButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.choseOpartion(button.innerText);
     calculator.updateDisplay();
   });
 });
