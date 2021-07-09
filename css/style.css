@@ -7,5 +7,53 @@
 }
 
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: Roboto, "Times New Roman", Times, serif;
+  background: linear-gradient(to right, #333, #eee);
+}
+
+.calculator-app {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(130px, auto) repeat(5, 100px);
+}
+
+.calculator-app > button {
+  cursor: pointer;
+  font-size: 3rem;
+  background: rgba(226, 221, 221, 0.534);
+  border: 1px solid #fff;
+  outline: none;
+}
+
+.calculator-app > button:hover {
+  background: rgba(231, 218, 218, 0.918);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1/-1;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-oparend {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1.5rem;
+}
+
+.output .current-oparend {
+  color: rgb(255, 255, 255);
+  font-size: 2.5rem;
 }
