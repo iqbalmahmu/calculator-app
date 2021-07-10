@@ -21,13 +21,22 @@ class Calculator {
   }
 
   choseOpartion(oparation) {
+    // this.currentOparand = oparation;
+    if (this.currentOparand === "") return;
+    if (this.previusOparand != "") {
+      this.compute();
+    }
     this.oparation = oparation;
+    this.previusOparand = this.currentOparand;
+    this.currentOparand = "";
   }
 
   compute() {}
 
   updateDisplay() {
+    // this.previusButton.innerText = this.previusOparand;
     this.currentButton.innerText = this.currentOparand;
+    this.previusButton.innerText = this.previusOparand;
   }
 }
 
